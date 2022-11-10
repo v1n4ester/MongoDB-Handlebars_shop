@@ -73,7 +73,9 @@ app.use(session({
 app.use(fileMiddleware.single('avatar')) // передаємо поле куди буде складатись файл
 app.use(csrf()) // мусить бути після створення сессії
 app.use(flash())
-app.use(helmet())
+app.use(helmet({
+    contentSecurityPolicy: false,
+}))
 app.use(compression())
 
 app.use(varMiddleware)
