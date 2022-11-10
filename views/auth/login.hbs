@@ -1,0 +1,67 @@
+<div class="auth">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s6"><a class="active" href="#login">Sing in</a></li>
+                <li class="tab col s6"><a href="#register">Sing up</a></li>
+            </ul>
+        </div>
+        <div id="login" class="col s6 offset-s3">
+            {{#if loginError}}
+                <p class="alert">{{loginError}}</p>
+            {{/if}}
+            <h1>Sing in to store</h1>
+            <form action="/auth/login" method="POST">
+                <div class="input-field">
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="Write email"></span>
+                </div>
+                <div class="input-field">
+                    <input id="password" name="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                    <span class="helper-text" data-error="Write password"></span>
+                </div>
+
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+
+                <p><a href="/auth/reset">Forgot a password?</a></p>
+
+                <button type="submit" class="btn btn-primary">Sing in</button>
+            </form>
+        </div>
+
+        <div id="register" class="col s6 offset-s3">
+            {{#if registerError}}
+                <p class="alert">{{registerError}}</p>
+            {{/if}}
+            <h1>Create an account</h1>
+            <form action="/auth/register" method="POST" novalidate>
+                <div class="input-field">
+                    <input id="remail" name="email" type="email" class="validate" required>
+                    <label for="remail">Email</label>
+                    <span class="helper-text" data-error="Write email"></span>
+                </div>
+                <div class="input-field">
+                    <input id="rpassword" name="password" type="password" class="validate" required>
+                    <label for="rpassword">Password</label>
+                    <span class="helper-text" data-error="Write password"></span>
+                </div>
+                <div class="input-field">
+                    <input id="confirm" name="confirm" type="password" class="validate" required>
+                    <label for="confirm">Password again</label>
+                    <span class="helper-text" data-error="Write password"></span>
+                </div>
+                <div class="input-field">
+                    <input id="name" name="name" type="text" class="validate" required>
+                    <label for="name">Your name</label>
+                    <span class="helper-text" data-error="Write name"></span>
+                </div>
+
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+
+                <button type="submit" class="btn btn-primary">Sing up</button>
+            </form>
+        </div>
+    </div>
+</div>
